@@ -10,5 +10,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist"
+  },
+  "watchOptions": {
+    "excludeDirectories": ["**/node_modules", "dist/*"]
   }
 }

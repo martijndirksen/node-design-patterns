@@ -4,7 +4,8 @@
   "description": "A collection of design patterns based on the GoF design patterns",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "watch": "tsc -w"
   },
   "repository": {
     "type": "git",
