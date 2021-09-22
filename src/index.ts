@@ -1,1 +1,1 @@
-import './behavioral/strategy';
+import './structural/bridge';
