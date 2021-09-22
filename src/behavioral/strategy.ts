@@ -4,22 +4,29 @@ interface IPizzaSharingStrategy {
 
 interface IPizza {
   get topping(): string;
-  share(strategy: IPizzaSharingStrategy): void;
+  set strategy(value: IPizzaSharingStrategy);
+  share(): void;
 }
 
 class Pizza implements IPizza {
   private readonly _topping: string;
+  private _strategy: IPizzaSharingStrategy;
 
-  constructor(topping: string) {
+  constructor(topping: string, strategy: IPizzaSharingStrategy) {
     this._topping = topping;
+    this._strategy = strategy;
   }
 
   get topping(): string {
     return this._topping;
   }
 
-  share(strategy: IPizzaSharingStrategy) {
-    strategy.share(this);
+  set strategy(value: IPizzaSharingStrategy) {
+    this._strategy = value;
+  }
+
+  share(): void {
+    this._strategy.share(this);
   }
 }
 
@@ -45,8 +52,11 @@ class DropPizzaStrategy implements IPizzaSharingStrategy {
   }
 }
 
-const pizzaA: IPizza = new Pizza('salami');
-const pizzaB: IPizza = new Pizza('mozzarella');
+const pizzaA: IPizza = new Pizza('salami', new SlicedPizzaStrategy(8));
+const pizzaB: IPizza = new Pizza('mozzarella', new DropPizzaStrategy());
 
-pizzaA.share(new SlicedPizzaStrategy(8));
-pizzaB.share(new DropPizzaStrategy());
+pizzaA.share();
+pizzaB.share();
+
+pizzaB.strategy = new SlicedPizzaStrategy(4);
+pizzaB.share();
