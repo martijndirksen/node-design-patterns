@@ -39,7 +39,7 @@ class SlicedPizzaStrategy implements IPizzaSharingStrategy {
 
   share(pizza: IPizza): void {
     console.log(
-      `Sliced ${pizza.topping} pizza into ${this.numberOfSlices} slices`
+      `Sliced a ${pizza.topping} pizza into ${this.numberOfSlices} slices`
     );
   }
 }
@@ -47,7 +47,7 @@ class SlicedPizzaStrategy implements IPizzaSharingStrategy {
 class DropPizzaStrategy implements IPizzaSharingStrategy {
   share(pizza: IPizza): void {
     console.log(
-      `Accidentally dropped ${pizza.topping} pizza on the floor. What a waste!`
+      `Accidentally dropped a ${pizza.topping} pizza on the floor. What a waste!`
     );
   }
 }
