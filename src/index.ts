@@ -1,1 +1,1 @@
-import './structural/facade';
+import './behavioral/strategy';
